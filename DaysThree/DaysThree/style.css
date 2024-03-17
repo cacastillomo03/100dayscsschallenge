@@ -1,0 +1,253 @@
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+html{
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body{
+    min-height: 100%;
+    display: grid;
+    place-content: center;
+    
+}
+
+:root
+{
+	--max-time: 5s;
+}
+
+
+
+.container {
+    position: relative;
+    width:35rem ;
+    aspect-ratio: 1/1;
+    border-radius: 2px;
+    box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+    overflow: hidden;
+    background: #fff;
+    color: #333;
+      font-family: 'Open Sans', Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+}
+.container-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #333;
+}
+
+.container-center__cont
+{
+	position: relative;
+	width: 50%;
+	height: 50%;
+	
+	clip-path: circle(50%);
+	overflow: hidden;
+}
+
+.container-center__cont::after
+{
+	content: 'Carlos Castillo';
+	position: absolute;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 10;
+	opacity: 0;
+	
+	animation: container-anim var(--max-time) infinite cubic-bezier(.65,.65,.77,.9);
+}
+
+@keyframes container-anim
+{
+	from
+	{
+		opacity: 1;
+	}
+	20%, 60%
+	{
+		opacity: 0;
+	}
+	90%, to
+	{
+		opacity: 1;
+	}
+}
+.sky {
+    position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #67B2CA;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+.ground {
+    position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 30%;
+	background-color: #BEB165;
+	z-index: 2;
+}
+.pyramid {
+    position: absolute;
+	top: 0;
+	left: 0;
+	
+	width: 100%;
+	height: 100%;
+	
+	clip-path: polygon(50% 40%, 85% 70%, 50% 70%, 15% 70%);
+	
+	background-color: white;
+	
+	z-index: 5;
+	
+	animation: pyramid-anim var(--max-time) infinite;
+}
+
+@keyframes pyramid-anim
+{
+	from
+	{
+		background: #F1F1F1;
+	}
+	50%
+	{
+		background: #F5F5F5;
+	}
+	90%
+	{
+		background: #ACACAC;
+	}
+}
+.pyramid__side {
+    position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	
+	clip-path: polygon(50% 40%, 85% 70%, 50% 70%, 60% 70%);
+	background: #989898;
+	
+	z-index: 6;
+	animation: pyramid__side-anim  var(--max-time) infinite;
+}
+
+@keyframes pyramid__side-anim
+{
+	from
+	{
+		background: #989898;
+	}
+	50%
+	{
+		background: #ACACAC;
+	}
+	100%
+	{
+		background: #F1F1F1;
+	}
+}
+.galaxy {
+	position: absolute;
+	top: 20px;
+	left: -20px;
+	width: 130%;
+	height: 130%;
+	transform: rotateZ(0deg);
+	z-index: 7;
+	
+	animation: sun-anim  var(--max-time) infinite;
+}
+
+@keyframes sun-anim
+{
+	from
+	{
+		transform: rotateZ(-90deg);
+	}
+	30%
+	{
+		transform: rotateZ(-35deg);
+	}
+	100%
+	{
+		transform: rotateZ(90deg)
+	}
+}
+
+
+.sun {
+    position: absolute;
+	top: -120px;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	
+	background-color: blue;
+	
+	clip-path: circle(8%);
+}
+.shadow {
+    position: absolute;
+	top: 0;
+	left: 0;
+	
+	width: 100%;
+	height: 100%;
+	
+	clip-path: polygon(50% 70%, 85% 70%, 100% 72%, 15% 70%);
+	
+	background-color: rgba(0, 0, 0, 0.2);
+	
+	z-index: 8;
+	
+	animation: shadow-anim var(--max-time) infinite cubic-bezier(.65,.65,.77,.9);
+}
+
+@keyframes shadow-anim
+{
+	from
+	{
+		clip-path: polygon(50% 70%, 85% 70%, 100% 72%, 15% 70%);
+	}
+	20%, 35%
+	{
+		clip-path: polygon(50% 70%, 85% 70%, 100% 80%, 15% 70%);
+	}
+	50%
+	{
+		clip-path: polygon(50% 70%, 85% 70%, -50% 90%, 15% 70%);
+	}
+	60%, to {
+		clip-path: polygon(50% 70%, 85% 70%, 0% 72%, 15% 70%);
+	}
+}
